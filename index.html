@@ -1,68 +1,290 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>altharizz</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>altharizz</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ height:100vh;
+ background:#0b0b0b;
+ font-family:system-ui;
+ color:#fff;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+}
+
+/* CARD */
+.app{
+ width:320px;
+ background:#111;
+ border-radius:22px;
+ padding:16px;
+ box-shadow:0 40px 120px rgba(0,0,0,.9);
+}
+
+/* PROFILE */
+.profile{
+ display:flex;
+ gap:12px;
+ align-items:center;
+ margin-bottom:10px;
+}
+.avatar{
+ width:48px;
+ height:48px;
+ border-radius:14px;
+ background:#222;
+}
+.profile h1{
+ font-size:14px;
+ margin:0;
+}
+.profile p{
+ margin:2px 0 0;
+ font-size:11px;
+ opacity:.6;
+}
+
+/* INTRO */
+.intro{
+ font-size:11.5px;
+ line-height:1.5;
+ opacity:.75;
+ margin-bottom:12px;
+}
+
+/* CONTACT */
+.contact{
+ display:flex;
+ flex-wrap:wrap;
+ gap:6px;
+ margin-bottom:12px;
+}
+.contact a{
+ text-decoration:none;
+ font-size:11px;
+ padding:6px 10px;
+ border-radius:999px;
+ background:#1c1c1c;
+ color:#fff;
+ opacity:.75;
+ transition:.2s;
+}
+.contact a:hover{
+ opacity:1;
+ background:#2a2a2a;
+}
+
+/* PLAYLIST */
+.playlist{
+ margin-bottom:12px;
+}
+.track{
+ font-size:12px;
+ padding:6px 0;
+ opacity:.55;
+ cursor:pointer;
+}
+.track.active{opacity:1}
+
+/* PLAYER */
+.cover{
+ width:100%;
+ border-radius:16px;
+ margin:10px 0;
+}
+.title{
+ font-size:13px;
+ margin-bottom:4px;
+}
+
+.time{
+ display:flex;
+ justify-content:space-between;
+ font-size:11px;
+ opacity:.6;
+}
+
+.progress{
+ width:100%;
+ height:3px;
+ background:#2a2a2a;
+ border-radius:4px;
+ margin:6px 0;
+}
+.bar{
+ width:0%;
+ height:100%;
+ background:#fff;
+ transition:.1s;
+}
+
+.controls{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-top:6px;
+}
+.controls button{
+ background:none;
+ border:none;
+ color:#fff;
+ font-size:18px;
+ opacity:.85;
+}
+.controls button:hover{opacity:1}
+
+.volume{
+ width:100%;
+ margin-top:6px;
+}
+</style>
 </head>
 <body>
 
-<div class="bg"></div>
+<div class="app">
 
-<div class="wrapper">
-
-  <!-- PROFILE -->
-  <div class="card profile">
-    <img src="assets/avatar.png" class="avatar">
-    <h1>altharizz</h1>
-    <p class="desc">
-     Halo, saya <b>altharizz.</b>
-     Saya adalah web designer dan bot creator.
-     Saya juga peminat dunia it dan musik,
-     jadi Website ini adalah ruang kecil yang saya
-     buat untuk menikmati musik yang ada di playlist
-     saya dengan suasana tenang dan sederhana.
-    </p>
-    <div class="contact">
-      <a href="https://t.me/anntanr" target="_blank">Telegram</a>
-      <a href="https://wa.me/6283891459366" target="_blank">WhatsApp</a>
-      <a href="https://github.com/LuizaOffc" target="_blank">GitHub</a>
-    </div>
+ <!-- PROFILE -->
+ <div class="profile">
+  <div class="avatar"></div>
+  <div>
+   <h1>altharizz</h1>
+   <p>personal music space</p>
   </div>
+ </div>
 
-  <!-- PLAYER -->
-  <div class="card player" id="playerCard">
-    <img id="cover" class="cover" src="assets/cover1.jpg">
+ <!-- INTRO -->
+ <div class="intro">
+  Halo, saya <b>altharizz</b>.  
+  Saya adalah web designer dan bot creator. 
+  Saya juga peminat dunia it dan musik, jadi 
+  Website ini adalah ruang kecil yang saya buat
+  untuk menikmati musik yang ada di playlist
+  saya dengan suasana tenang dan sederhana.
+ </div>
 
-    <div class="title" id="songTitle">Klik ▶ untuk memutar</div>
+ <!-- CONTACT -->
+ <div class="contact">
+  <a href="https://t.me/anntanr" target="_blank">Telegram</a>
+  <a href="https://wa.me/6283891459366" target="_blank">WhatsApp</a>
+  <a href="https://www.instagram.com/4ltharizz?igsh=MWR2eWU1aXpwamxqaQ==" target="_blank">Instagram</a>
+  <a href="https://github.com/LuizaOffc" target="_blank">GitHub</a>
+ </div>
 
-    <canvas id="eq"></canvas>
+ <!-- PLAYLIST -->
+ <div class="playlist">
+  <div class="track active" onclick="playSong(0)">1 Disarankan Di Bandung - Dongker</div>
+  <div class="track" onclick="playSong(1)">2 Kota Ini Tak Sama Tanpamu - Nadhif Basamalah</div>
+  <div class="track" onclick="playSong(2)">3 Ngga Dulu - ciloqciliq, Zynakal, Akbar Chalay</div>
+ </div>
 
-    <div class="time">
-      <span id="current">0:00</span>
-      <span id="duration">0:00</span>
-    </div>
+ <!-- PLAYER -->
+ <img id="cover" class="cover" src="assets/img/cover1.jpg">
 
-    <div class="progress-wrap">
-      <div class="progress"></div>
-    </div>
+ <div id="title" class="title">
+  Disarankan Di Bandung – Dongker
+ </div>
 
-    <input type="range" class="volume" min="0" max="1" step="0.01" value="0.7">
+ <div class="time">
+  <span id="current">0:00</span>
+  <span id="duration">0:00</span>
+ </div>
 
-    <div class="playlist" id="playlist"></div>
+ <div class="progress">
+  <div id="bar" class="bar"></div>
+ </div>
 
-    <div class="controls">
-      <button onclick="prevSong()">⏮</button>
-      <button onclick="togglePlay()">▶</button>
-      <button onclick="toggleLoop()" id="loopBtn">🔁</button>
-      <button onclick="nextSong()">⏭</button>
-    </div>
-  </div>
+ <div class="controls">
+  <button onclick="prev()">⏮</button>
+  <button onclick="toggle()">▶</button>
+  <button onclick="next()">⏭</button>
+ </div>
+
+ <input class="volume" type="range" min="0" max="1" step="0.01"
+  value="1" oninput="audio.volume=this.value">
 
 </div>
 
-<script src="script.js"></script>
+<audio id="audio"></audio>
+
+<script>
+const songs=[
+ {
+  title:"Disarankan Di Bandung - Dongker",
+  src:"assets/song1.mp3",
+  cover:"assets/cover1.jpg"
+ },
+ {
+  title:"Kota Ini Tak Sama Tanpamu - Nadhif Basamalah",
+  src:"assets/song2.mp3",
+  cover:"assets/cover2.jpg"
+ },
+ {
+  title:"Ngga Dulu - ciloqciliq, Zynakal, Akbar Chalay",
+  src:"assets/song3.mp3",
+  cover:"assets/cover3.jpg"
+ }
+];
+
+let index=0;
+const audio=document.getElementById("audio");
+const title=document.getElementById("title");
+const cover=document.getElementById("cover");
+const bar=document.getElementById("bar");
+const current=document.getElementById("current");
+const duration=document.getElementById("duration");
+const tracks=document.querySelectorAll(".track");
+
+function loadSong(i){
+ index=i;
+ audio.src=songs[i].src;
+ title.innerText=songs[i].title;
+ cover.src=songs[i].cover;
+ tracks.forEach(t=>t.classList.remove("active"));
+ tracks[i].classList.add("active");
+ audio.play();
+}
+
+function toggle(){
+ audio.paused?audio.play():audio.pause();
+}
+
+function prev(){
+ loadSong((index-1+songs.length)%songs.length);
+}
+
+function next(){
+ loadSong((index+1)%songs.length);
+}
+
+function playSong(i){
+ loadSong(i);
+}
+
+audio.addEventListener("timeupdate",()=>{
+ if(!audio.duration) return;
+ bar.style.width=(audio.currentTime/audio.duration*100)+"%";
+ current.innerText=format(audio.currentTime);
+ duration.innerText=format(audio.duration);
+});
+
+audio.addEventListener("ended",()=>{
+ loadSong(0);
+});
+
+function format(t){
+ const m=Math.floor(t/60);
+ const s=Math.floor(t%60).toString().padStart(2,"0");
+ return m+":"+s;
+}
+
+loadSong(0);
+</script>
+
 </body>
 </html>
-
