@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anntarr</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anntanr</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<canvas id="particles"></canvas>
-<canvas id="visualizer"></canvas>
+<div class="bg"></div>
 
 <div class="card">
   <img src="assets/avatar.png" class="avatar">
-  <h1>Anntarr <span class="verified">✔</span></h1>
-  <p class="bio">Stay silent, let success speak.</p>
-
-  <div class="links">
-    <a href="#" class="btn">Telegram</a>
-    <a href="#" class="btn">GitHub</a>
-    <a href="#" class="btn">WhatsApp</a>
-  </div>
+  <h1>Anntanr</h1>
+  <p class="bio">Listen quietly. Feel deeply.</p>
 
   <div class="playlist" id="playlist"></div>
 
   <div class="player">
-    <div class="song-title" id="songTitle">Klik lagu lalu ▶</div>
-    <div class="progress-container"><div class="progress"></div></div>
+    <div id="songTitle" class="title">Klik ▶ untuk mulai</div>
+    <div class="progress-wrap">
+      <div class="progress"></div>
+    </div>
     <div class="controls">
       <button onclick="prevSong()">⏮</button>
       <button onclick="togglePlay()">▶</button>
@@ -38,4 +33,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
