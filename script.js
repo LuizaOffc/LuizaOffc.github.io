@@ -6,9 +6,9 @@ const songs=[
  "assets/song3.mp3"
 ];
 const titles=[
- "Kota ini tak sama tanpamu",
- "Resah jadi luka",
- "Bawa dia kembali"
+ "Disarankan Di Bandung",
+ "Kota Ini Tak Sama Tanpamu",
+ "Ngga Dulu"
 ];
 
 let index=0;
