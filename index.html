@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Altharizz</title>
+  <title>altharizz</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,16 +12,17 @@
 
 <div class="wrapper">
 
-  <!-- PROFILE -->
+  <!-- PROFILE (STATIS) -->
   <div class="card profile">
     <img src="assets/avatar.png" class="avatar">
     <h1>altharizz</h1>
     <p class="desc">
       Halo, saya <b>altharizz</b>.  
-      Saya adalah Website Designer dan Bot Creator.
-      Saya juga tertarik pada musik, teknologi, dan hal-hal sederhana
-      yang terasa bermakna. Website ini adalah ruang kecil
-      untuk menikmati musik dengan tenang.
+      Saya adalah web designer dan bot creator.
+      Saya juga peminat dunia it dan musik, jadi
+      Website ini adalah ruang kecil yang saya buat
+      untuk menikmati musik yang ada di playlist saya
+      dengan suasana tenang dan sederhana.
     </p>
 
     <div class="contact">
@@ -31,9 +32,9 @@
     </div>
   </div>
 
-  <!-- PLAYLIST -->
-  <div class="card player">
-    <div id="songTitle" class="title">Klik ▶ untuk memutar</div>
+  <!-- PLAYER (DINAMIS) -->
+  <div class="card player" id="playerCard">
+    <div class="title" id="songTitle">Klik ▶ untuk memutar</div>
 
     <div class="playlist" id="playlist"></div>
 
