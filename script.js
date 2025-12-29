@@ -1,6 +1,4 @@
-/* ===============================
-   AUDIO DATA
-================================ */
+/* ===== DATA ===== */
 const songs = [
   "assets/song1.mp3",
   "assets/song2.mp3",
@@ -15,140 +13,119 @@ const titles = [
 
 let index = 0;
 
-/* ===============================
-   AUDIO ELEMENT
-================================ */
+/* ===== AUDIO ===== */
 const audio = new Audio();
 audio.preload = "auto";
 
-/* ===============================
-   DOM
-================================ */
+/* ===== DOM ===== */
 const titleEl = document.getElementById("songTitle");
 const progress = document.querySelector(".progress");
 const playlist = document.getElementById("playlist");
 const card = document.querySelector(".card");
+const bg = document.querySelector(".bg");
 
-/* ===============================
-   PLAYLIST
-================================ */
-titles.forEach((title, i) => {
-  const el = document.createElement("div");
-  el.className = "song";
-  el.innerText = title;
-  el.onclick = () => {
-    index = i;
+/* ===== PLAYLIST ===== */
+titles.forEach((t,i)=>{
+  const el=document.createElement("div");
+  el.className="song";
+  el.innerText=t;
+  el.onclick=()=>{
+    index=i;
     loadSong();
     play();
   };
   playlist.appendChild(el);
 });
 
-function updateActive() {
-  document.querySelectorAll(".song").forEach((el, i) => {
-    el.classList.toggle("active", i === index);
-  });
+function updateActive(){
+  document.querySelectorAll(".song")
+    .forEach((s,i)=>s.classList.toggle("active",i===index));
 }
 
-/* ===============================
-   CONTROL
-================================ */
-function loadSong() {
-  audio.src = songs[index];
-  titleEl.innerText = titles[index];
+/* ===== CONTROL ===== */
+function loadSong(){
+  audio.src=songs[index];
+  titleEl.innerText=titles[index];
   updateActive();
 }
 
-function play() {
+function play(){
   initAudio();
   audio.play();
 }
 
-function togglePlay() {
-  if (!audio.src) loadSong();
+function togglePlay(){
+  if(!audio.src) loadSong();
   audio.paused ? play() : audio.pause();
 }
 
-function nextSong() {
-  index = (index + 1) % songs.length;
-  loadSong();
-  play();
+function nextSong(){
+  index=(index+1)%songs.length;
+  loadSong(); play();
 }
 
-function prevSong() {
-  index = (index - 1 + songs.length) % songs.length;
-  loadSong();
-  play();
+function prevSong(){
+  index=(index-1+songs.length)%songs.length;
+  loadSong(); play();
 }
 
-/* ===============================
-   PROGRESS
-================================ */
-audio.addEventListener("timeupdate", () => {
-  if (!audio.duration) return;
+/* ===== PROGRESS ===== */
+audio.addEventListener("timeupdate",()=>{
+  if(!audio.duration) return;
   progress.style.width =
-    (audio.currentTime / audio.duration) * 100 + "%";
+    (audio.currentTime/audio.duration)*100+"%";
 });
 
-/* ===============================
-   AUDIO CONTEXT
-================================ */
+/* ===== AUDIO CONTEXT ===== */
 let ctx, analyser, src, freq;
 
-function initAudio() {
-  if (ctx) return;
+function initAudio(){
+  if(ctx) return;
 
-  ctx = new (window.AudioContext || window.webkitAudioContext)();
-  analyser = ctx.createAnalyser();
-  analyser.fftSize = 1024;
+  ctx=new (window.AudioContext||window.webkitAudioContext)();
+  analyser=ctx.createAnalyser();
+  analyser.fftSize=512;
 
-  src = ctx.createMediaElementSource(audio);
+  src=ctx.createMediaElementSource(audio);
   src.connect(analyser);
   analyser.connect(ctx.destination);
 
-  freq = new Uint8Array(analyser.frequencyBinCount);
-  ambienceLoop();
+  freq=new Uint8Array(analyser.frequencyBinCount);
+  loop();
 }
 
-/* ===============================
-   ULTRA PREMIUM BEAT AMBIENCE
-================================ */
-let smooth = 0;
+/* ===== PREMIUM BEAT LOOP ===== */
+let smooth=0;
 
-function ambienceLoop() {
-  requestAnimationFrame(ambienceLoop);
+function loop(){
+  requestAnimationFrame(loop);
   analyser.getByteFrequencyData(freq);
 
-  // ultra low bass only
-  let bass = 0;
-  for (let i = 0; i < 3; i++) bass += freq[i];
-  bass = bass / 3 / 255;
+  // bass + sedikit mid (biar kerasa)
+  let energy=0;
+  for(let i=0;i<10;i++) energy+=freq[i];
+  energy=energy/10/255;
 
-  // heavy smoothing (cinematic)
-  smooth += (bass - smooth) * 0.025;
+  smooth += (energy - smooth) * 0.05;
 
-  // very subtle scale
-  const scale = 1 + smooth * 0.018;
+  // scale terasa tapi elegan
+  const scale = 1 + smooth * 0.035;
   card.style.transform =
-    `translate(-50%, -50%) scale(${scale})`;
+    `translate(-50%,-50%) scale(${scale})`;
 
-  // soft luxury glow
+  // glow premium
   card.style.boxShadow = `
-    0 20px 60px rgba(0,0,0,.6),
-    0 0 ${60 + smooth * 160}px rgba(255,255,255,.06),
-    0 0 ${140 + smooth * 320}px rgba(120,255,240,${0.06 + smooth})
+    0 40px 120px rgba(0,0,0,.8),
+    0 0 ${80 + smooth*260}px rgba(160,255,245,${0.25 + smooth})
   `;
 
-  // ambient background light
-  document.body.style.background =
-    `radial-gradient(
-      circle at center,
-      rgba(40,255,240,${0.04 + smooth * 0.18}),
-      #000 80%
-    )`;
+  // ambient background movement
+  bg.style.transform =
+    `scale(${1 + smooth*0.12})`;
+  bg.style.opacity =
+    0.55 + smooth*0.6;
 }
 
-/* ===============================
-   INIT
-================================ */
+/* ===== INIT ===== */
 loadSong();
+
