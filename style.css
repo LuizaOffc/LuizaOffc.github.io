@@ -7,36 +7,6 @@ body{
   overflow:hidden;
 }
 
-/* LOCK */
-.lock{
-  position:fixed;
-  inset:0;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:10;
-}
-.lock-box{
-  background:#000;
-  padding:30px;
-  border-radius:15px;
-  box-shadow:0 0 30px var(--neon);
-  text-align:center;
-}
-.lock-box input{
-  width:100%;
-  padding:10px;
-  margin:15px 0;
-}
-.lock-box button{
-  padding:10px;
-  width:100%;
-  background:var(--neon);
-  border:none;
-}
-.lock-box p{color:red;font-size:12px}
-
 /* CANVAS */
 #particles,#visualizer{
   position:fixed;
