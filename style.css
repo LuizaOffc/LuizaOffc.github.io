@@ -1,36 +1,127 @@
-/* === PREMIUM GLOW === */
-:root {
-  --neon: #00fff0;
+:root { --neon:#00fff0; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+
+body{
+  background:#000;
+  height:100vh;
+  overflow:hidden;
 }
 
-body {
-  background: radial-gradient(circle at top, #020b0e, #000);
-  overflow: hidden;
+/* LOCK */
+.lock{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+}
+.lock-box{
+  background:#000;
+  padding:30px;
+  border-radius:15px;
+  box-shadow:0 0 30px var(--neon);
+  text-align:center;
+}
+.lock-box input{
+  width:100%;
+  padding:10px;
+  margin:15px 0;
+}
+.lock-box button{
+  padding:10px;
+  width:100%;
+  background:var(--neon);
+  border:none;
+}
+.lock-box p{color:red;font-size:12px}
+
+/* CANVAS */
+#particles,#visualizer{
+  position:fixed;
+  inset:0;
 }
 
-/* CARD FLOAT */
-.card {
-  position: relative;
-  animation: float 6s ease-in-out infinite;
-  box-shadow:
-    0 0 30px rgba(0,255,240,.25),
-    0 0 80px rgba(0,255,240,.15);
+/* CARD */
+.card{
+  width:340px;
+  background:rgba(0,0,0,.7);
+  padding:25px;
+  border-radius:25px;
+  box-shadow:0 0 40px rgba(0,255,240,.3);
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  animation:float 6s ease-in-out infinite;
+}
+.hidden{display:none}
+
+@keyframes float{50%{transform:translate(-50%,-55%)}}
+
+.avatar{
+  width:100px;
+  border-radius:50%;
+  box-shadow:0 0 20px var(--neon);
 }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+h1{color:#fff;margin:10px 0}
+.bio{color:#aaa;font-size:13px;margin-bottom:15px}
+.verified{color:var(--neon)}
+
+.links .btn{
+  display:block;
+  margin:8px 0;
+  padding:10px;
+  color:#fff;
+  text-align:center;
+  border-radius:10px;
+  background:rgba(255,255,255,.05);
 }
 
-/* AVATAR GLOW */
-.avatar {
-  border-radius: 50%;
-  box-shadow:
-    0 0 15px var(--neon),
-    0 0 40px rgba(0,255,240,.6);
-  transition: transform .3s ease;
+/* PLAYLIST */
+.playlist{
+  max-height:120px;
+  overflow-y:auto;
+  margin-top:15px;
 }
-.avatar:hover {
-  transform: scale(
+.song{
+  padding:8px;
+  color:#aaa;
+  cursor:pointer;
+}
+.song.active{
+  color:var(--neon);
+  text-shadow:0 0 10px var(--neon);
+}
 
+/* PLAYER */
+.player{margin-top:15px}
+.song-title{color:#fff;font-size:14px}
+
+.progress-container{
+  height:4px;
+  background:#333;
+  border-radius:5px;
+  overflow:hidden;
 }
+.progress{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#00fff0,#00b3ff);
+}
+
+.controls{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:10px;
+}
+.controls button{
+  background:none;
+  border:none;
+  color:var(--neon);
+  font-size:24px;
+}
+
