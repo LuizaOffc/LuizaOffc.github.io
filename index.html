@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>altharizz</title>
+<title>altharizz • music</title>
 
 <style>
 *{box-sizing:border-box}
@@ -18,98 +18,85 @@ body{
  align-items:center;
 }
 
-/* CARD */
 .app{
  width:320px;
  background:#111;
  border-radius:22px;
  padding:16px;
  box-shadow:0 40px 120px rgba(0,0,0,.9);
+ overflow:hidden;
 }
 
-/* PROFILE */
+/* ===== PROFILE ===== */
 .profile{
- display:flex;
- gap:12px;
- align-items:center;
- margin-bottom:10px;
+ text-align:center;
+ margin-bottom:16px;
 }
-.avatar{
- width:48px;
- height:48px;
- border-radius:14px;
- background:#222;
+.profile img{
+ width:80px;
+ height:80px;
+ border-radius:22px;
+ object-fit:cover;
+ margin-bottom:8px;
 }
 .profile h1{
- font-size:14px;
+ font-size:15px;
  margin:0;
 }
 .profile p{
- margin:2px 0 0;
  font-size:11px;
  opacity:.6;
+ margin:4px 0;
 }
-
-/* INTRO */
 .intro{
  font-size:11.5px;
- line-height:1.5;
  opacity:.75;
- margin-bottom:12px;
+ line-height:1.5;
+ margin:10px 0;
 }
-
-/* CONTACT */
 .contact{
  display:flex;
  flex-wrap:wrap;
+ justify-content:center;
  gap:6px;
- margin-bottom:12px;
 }
 .contact a{
- text-decoration:none;
  font-size:11px;
  padding:6px 10px;
- border-radius:999px;
  background:#1c1c1c;
+ border-radius:999px;
+ text-decoration:none;
  color:#fff;
  opacity:.75;
- transition:.2s;
 }
-.contact a:hover{
- opacity:1;
- background:#2a2a2a;
-}
+.contact a:hover{opacity:1}
 
-/* PLAYLIST */
-.playlist{
- margin-bottom:12px;
+/* ===== PLAYER SLIDE ===== */
+.slider{
+ display:flex;
+ transition:.35s ease;
 }
-.track{
- font-size:12px;
- padding:6px 0;
- opacity:.55;
- cursor:pointer;
+.slide{
+ min-width:100%;
+ text-align:center;
 }
-.track.active{opacity:1}
 
 /* PLAYER */
 .cover{
  width:100%;
- border-radius:16px;
- margin:10px 0;
+ border-radius:18px;
+ margin:14px 0 8px;
 }
 .title{
  font-size:13px;
  margin-bottom:4px;
 }
-
 .time{
  display:flex;
  justify-content:space-between;
  font-size:11px;
  opacity:.6;
 }
-
 .progress{
  width:100%;
  height:3px;
@@ -118,16 +105,13 @@ body{
  margin:6px 0;
 }
 .bar{
- width:0%;
  height:100%;
+ width:0%;
  background:#fff;
- transition:.1s;
 }
-
 .controls{
  display:flex;
  justify-content:space-between;
- align-items:center;
  margin-top:6px;
 }
 .controls button{
@@ -137,8 +121,6 @@ body{
  font-size:18px;
  opacity:.85;
 }
-.controls button:hover{opacity:1}
-
 .volume{
  width:100%;
  margin-top:6px;
@@ -149,55 +131,59 @@ body{
 
 <div class="app">
 
- <!-- PROFILE -->
+ <!-- ===== PROFILE (STATIS) ===== -->
  <div class="profile">
-  <div class="avatar"></div>
-  <div>
-   <h1>altharizz</h1>
-   <p>personal music space</p>
+  <img src="assets/avatar.jpg">
+  <h1>altharizz</h1>
+  <p>personal music space</p>
+
+  <div class="intro">
+   Halo, saya <b>altharizz</b>.  
+   Saya adalah web designer dan bot creator
+   yang menyediakan berbagai jasa seperti
+   pembuatan web atau bot, saya juga peminat
+   music oleh karena itu web ini saya buat untuk
+   anda agar bisa lebih mudah untuk menemukan 
+   contact saya dan sekaligus mendengarkan music yang
+   ada di playlist saya.
+   Order? langsung saja contact admin
+  </div>
+
+  <div class="contact">
+   <a href="https://t.me/anntanr" target="_blank">Telegram</a>
+   <a href="https://wa.me/6283891459366" target="_blank">WhatsApp</a>
+   <a href="https://www.instagram.com/4ltharizz" target="_blank">Instagram</a>
+   <a href="https://github.com/LuizaOffc" target="_blank">GitHub</a>
   </div>
  </div>
 
- <!-- INTRO -->
- <div class="intro">
-  Halo, saya <b>altharizz</b>.  
-  Saya adalah web designer dan bot creator. 
-  Saya juga peminat dunia it dan musik, jadi 
-  Website ini adalah ruang kecil yang saya buat
-  untuk menikmati musik yang ada di playlist
-  saya dengan suasana tenang dan sederhana.
+ <!-- ===== MUSIC SLIDER ===== -->
+ <div class="slider" id="slider">
+
+  <div class="slide">
+   <img class="cover" src="assets/cover1.jpg">
+   <div class="title">Disarankan Di Bandung - Dongker</div>
+  </div>
+
+  <div class="slide">
+   <img class="cover" src="assets/cover2.jpg">
+   <div class="title">Kota Ini Tak Sama Tanpamu - Nadhif Basamalah</div>
+  </div>
+
+  <div class="slide">
+   <img class="cover" src="assets/cover3.jpg">
+   <div class="title">Ngga Dulu - ciloqciliq, Zynakal, Akbar Chalay</div>
+  </div>
+
  </div>
 
- <!-- CONTACT -->
- <div class="contact">
-  <a href="https://t.me/anntanr" target="_blank">Telegram</a>
-  <a href="https://wa.me/6283891459366" target="_blank">WhatsApp</a>
-  <a href="https://www.instagram.com/4ltharizz?igsh=MWR2eWU1aXpwamxqaQ==" target="_blank">Instagram</a>
-  <a href="https://github.com/LuizaOffc" target="_blank">GitHub</a>
- </div>
-
- <!-- PLAYLIST -->
- <div class="playlist">
-  <div class="track active" onclick="playSong(0)">1 Disarankan Di Bandung - Dongker</div>
-  <div class="track" onclick="playSong(1)">2 Kota Ini Tak Sama Tanpamu - Nadhif Basamalah</div>
-  <div class="track" onclick="playSong(2)">3 Ngga Dulu - ciloqciliq, Zynakal, Akbar Chalay</div>
- </div>
-
- <!-- PLAYER -->
- <img id="cover" class="cover" src="assets/img/cover1.jpg">
-
- <div id="title" class="title">
-  Disarankan Di Bandung – Dongker
- </div>
-
+ <!-- CONTROLS -->
  <div class="time">
   <span id="current">0:00</span>
   <span id="duration">0:00</span>
  </div>
 
- <div class="progress">
-  <div id="bar" class="bar"></div>
- </div>
+ <div class="progress"><div id="bar" class="bar"></div></div>
 
  <div class="controls">
   <button onclick="prev()">⏮</button>
@@ -214,56 +200,33 @@ body{
 
 <script>
 const songs=[
- {
-  title:"Disarankan Di Bandung - Dongker",
-  src:"assets/song1.mp3",
-  cover:"assets/cover1.jpg"
- },
- {
-  title:"Kota Ini Tak Sama Tanpamu - Nadhif Basamalah",
-  src:"assets/song2.mp3",
-  cover:"assets/cover2.jpg"
- },
- {
-  title:"Ngga Dulu - ciloqciliq, Zynakal, Akbar Chalay",
-  src:"assets/song3.mp3",
-  cover:"assets/cover3.jpg"
- }
+ {src:"assets/song1.mp3"},
+ {src:"assets/song2.mp3"},
+ {src:"assets/song3.mp3"}
 ];
 
 let index=0;
 const audio=document.getElementById("audio");
-const title=document.getElementById("title");
-const cover=document.getElementById("cover");
+const slider=document.getElementById("slider");
 const bar=document.getElementById("bar");
 const current=document.getElementById("current");
 const duration=document.getElementById("duration");
-const tracks=document.querySelectorAll(".track");
 
 function loadSong(i){
  index=i;
  audio.src=songs[i].src;
- title.innerText=songs[i].title;
- cover.src=songs[i].cover;
- tracks.forEach(t=>t.classList.remove("active"));
- tracks[i].classList.add("active");
+ slider.style.transform=`translateX(-${i*100}%)`;
  audio.play();
 }
 
 function toggle(){
  audio.paused?audio.play():audio.pause();
 }
-
-function prev(){
- loadSong((index-1+songs.length)%songs.length);
-}
-
 function next(){
  loadSong((index+1)%songs.length);
 }
-
-function playSong(i){
- loadSong(i);
+function prev(){
+ loadSong((index-1+songs.length)%songs.length);
 }
 
 audio.addEventListener("timeupdate",()=>{
@@ -272,10 +235,7 @@ audio.addEventListener("timeupdate",()=>{
  current.innerText=format(audio.currentTime);
  duration.innerText=format(audio.duration);
 });
-
-audio.addEventListener("ended",()=>{
- loadSong(0);
-});
+audio.addEventListener("ended",()=>loadSong(0));
 
 function format(t){
  const m=Math.floor(t/60);
@@ -288,3 +248,4 @@ loadSong(0);
 
 </body>
 </html>
+
