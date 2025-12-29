@@ -262,3 +262,23 @@ body{
 @media(max-width:800px){
   .wrapper{flex-direction:column}
 }
+
+.cover{
+  width:100%;
+  border-radius:20px;
+  margin-bottom:12px;
+  box-shadow:0 15px 40px rgba(0,0,0,.6);
+}
+
+.time{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  opacity:.7;
+  margin-bottom:6px;
+}
+
+.volume{
+  width:100%;
+  margin:10px 0;
+}
