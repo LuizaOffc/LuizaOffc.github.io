@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Anntanr</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="container">
+  <div class="profile-card">
+
+    <img src="assets/avatar.png" class="avatar">
+    <h1>Anntanr <span>✔</span></h1>
+    <p class="bio">Stay silent, Let success speak.</p>
+
+    <div class="links">
+      <a href="#">Telegram</a>
+      <a href="#">GitHub</a>
+      <a href="#">WhatsApp</a>
+    </div>
+
+    <div class="player">
+      <p id="song-title">Disarankan Di Bandung</p>
+      <audio id="audio"></audio>
+
+      <div class="controls">
+        <button onclick="prevSong()">⏮</button>
+        <button onclick="playPause()">▶</button>
+        <button onclick="nextSong()">⏭</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <small>© 2025 anntanr — All rights reserved.</small>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

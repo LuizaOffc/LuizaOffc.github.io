@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: black;
+  color: white;
+  overflow: hidden;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.profile-card {
+  background: rgba(0,0,0,0.65);
+  padding: 30px;
+  width: 340px;
+  border-radius: 25px;
+  box-shadow: 0 0 40px cyan;
+  text-align: center;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid cyan;
+  box-shadow: 0 0 20px cyan;
+}
+
+h1 span {
+  color: cyan;
+}
+
+.bio {
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.links a {
+  padding: 12px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: white;
+  background: #111;
+  border: 1px solid #222;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 15px cyan;
+}
+
+.player {
+  margin-top: 20px;
+}
+
+.controls button {
+  margin: 5px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  border: none;
+  background: cyan;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 0 10px cyan;
+}
+
+footer {
+  margin-top: 15px;
+  font-size: 12px;
+  opacity: 0.6;
+}
