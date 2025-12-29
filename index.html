@@ -12,19 +12,18 @@
 
 <div class="wrapper">
 
-  <!-- PROFILE (STATIS) -->
+  <!-- PROFILE -->
   <div class="card profile">
     <img src="assets/avatar.png" class="avatar">
     <h1>altharizz</h1>
     <p class="desc">
-      Halo, saya <b>altharizz</b>.  
-      Saya adalah web designer dan bot creator.
-      Saya juga peminat dunia it dan musik, jadi
-      Website ini adalah ruang kecil yang saya buat
-      untuk menikmati musik yang ada di playlist saya
-      dengan suasana tenang dan sederhana.
+     Halo, saya <b>altharizz.</b>
+     Saya adalah web designer dan bot creator.
+     Saya juga peminat dunia it dan musik,
+     jadi Website ini adalah ruang kecil yang saya
+     buat untuk menikmati musik yang ada di playlist
+     saya dengan suasana tenang dan sederhana.
     </p>
-
     <div class="contact">
       <a href="https://t.me/anntanr" target="_blank">Telegram</a>
       <a href="https://wa.me/6283891459366" target="_blank">WhatsApp</a>
@@ -32,19 +31,31 @@
     </div>
   </div>
 
-  <!-- PLAYER (DINAMIS) -->
+  <!-- PLAYER -->
   <div class="card player" id="playerCard">
+    <img id="cover" class="cover" src="assets/cover1.jpg">
+
     <div class="title" id="songTitle">Klik ▶ untuk memutar</div>
 
-    <div class="playlist" id="playlist"></div>
+    <canvas id="eq"></canvas>
+
+    <div class="time">
+      <span id="current">0:00</span>
+      <span id="duration">0:00</span>
+    </div>
 
     <div class="progress-wrap">
       <div class="progress"></div>
     </div>
 
+    <input type="range" class="volume" min="0" max="1" step="0.01" value="0.7">
+
+    <div class="playlist" id="playlist"></div>
+
     <div class="controls">
       <button onclick="prevSong()">⏮</button>
       <button onclick="togglePlay()">▶</button>
+      <button onclick="toggleLoop()" id="loopBtn">🔁</button>
       <button onclick="nextSong()">⏭</button>
     </div>
   </div>
@@ -54,3 +65,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
