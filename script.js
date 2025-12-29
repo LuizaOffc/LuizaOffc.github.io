@@ -88,3 +88,6 @@ const pts=[...Array(60)].map(()=>({
  });
  requestAnimationFrame(animate);
 })();
+document.addEventListener("click", () => {
+  initAudio();
+}, { once: true });
