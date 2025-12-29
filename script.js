@@ -10,15 +10,26 @@ const titles=[
   "Ngga Dulu"
 ];
 
+const covers=[
+  "assets/cover1.jpg",
+  "assets/cover2.jpg",
+  "assets/cover3.jpg"
+];
+
 let index=0;
 const audio=new Audio();
 audio.preload="auto";
+audio.volume=0.7;
 
 const titleEl=document.getElementById("songTitle");
 const progress=document.querySelector(".progress");
 const playlist=document.getElementById("playlist");
 const player=document.getElementById("playerCard");
 const bg=document.querySelector(".bg");
+const cover=document.getElementById("cover");
+const vol=document.querySelector(".volume");
+const cur=document.getElementById("current");
+const dur=document.getElementById("duration");
 
 /* PLAYLIST */
 titles.forEach((t,i)=>{
@@ -41,6 +52,7 @@ function updateActive(){
 function load(){
   audio.src=songs[index];
   titleEl.innerText=titles[index];
+  cover.src=covers[index];
   updateActive();
 }
 
@@ -63,14 +75,27 @@ function prevSong(){
   load(); play();
 }
 
-/* PROGRESS */
+/* VOLUME */
+vol.oninput=()=> audio.volume=vol.value;
+
+/* TIME */
+audio.addEventListener("loadedmetadata",()=>{
+  dur.innerText=format(audio.duration);
+});
 audio.addEventListener("timeupdate",()=>{
   if(!audio.duration)return;
   progress.style.width=
     (audio.currentTime/audio.duration)*100+"%";
+  cur.innerText=format(audio.currentTime);
 });
 
-/* RESET SAAT SELESAI / PAUSE */
+function format(t){
+  const m=Math.floor(t/60);
+  const s=Math.floor(t%60);
+  return `${m}:${s<10?"0":""}${s}`;
+}
+
+/* RESET */
 audio.addEventListener("ended",resetVisual);
 audio.addEventListener("pause",resetVisual);
 
@@ -88,28 +113,25 @@ function initAudio(){
   loop();
 }
 
-/* PLAYER BEAT */
+/* BEAT */
 let smooth=0;
 function loop(){
   requestAnimationFrame(loop);
   if(!analyser)return;
 
   analyser.getByteFrequencyData(freq);
-
   let energy=0;
   for(let i=0;i<12;i++) energy+=freq[i];
   energy=energy/12/255;
 
   smooth+=(energy-smooth)*0.05;
 
-  player.style.transform=
-    `scale(${1+smooth*0.035})`;
+  player.style.transform=`scale(${1+smooth*0.03})`;
   player.style.boxShadow=
     `0 40px 120px rgba(0,0,0,.8),
      0 0 ${50+smooth*220}px rgba(160,255,245,.35)`;
 
   bg.style.transform=`scale(${1+smooth*0.12})`;
-  bg.style.opacity=.6+smooth*.4;
 }
 
 function resetVisual(){
@@ -118,7 +140,6 @@ function resetVisual(){
   player.style.boxShadow=
     "0 40px 120px rgba(0,0,0,.8)";
   bg.style.transform="scale(1)";
-  bg.style.opacity=.6;
 }
 
 load();
