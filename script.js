@@ -17,7 +17,7 @@ audio.preload="auto";
 const titleEl=document.getElementById("songTitle");
 const progress=document.querySelector(".progress");
 const playlist=document.getElementById("playlist");
-const cards=document.querySelectorAll(".card");
+const player=document.getElementById("playerCard");
 const bg=document.querySelector(".bg");
 
 /* PLAYLIST */
@@ -70,6 +70,10 @@ audio.addEventListener("timeupdate",()=>{
     (audio.currentTime/audio.duration)*100+"%";
 });
 
+/* RESET SAAT SELESAI / PAUSE */
+audio.addEventListener("ended",resetVisual);
+audio.addEventListener("pause",resetVisual);
+
 /* AUDIO CONTEXT */
 let ctx,analyser,src,freq;
 function initAudio(){
@@ -84,34 +88,37 @@ function initAudio(){
   loop();
 }
 
-/* BEAT LOOP */
+/* PLAYER BEAT */
 let smooth=0;
 function loop(){
   requestAnimationFrame(loop);
+  if(!analyser)return;
+
   analyser.getByteFrequencyData(freq);
 
   let energy=0;
-  for(let i=0;i<10;i++) energy+=freq[i];
-  energy=energy/10/255;
+  for(let i=0;i<12;i++) energy+=freq[i];
+  energy=energy/12/255;
 
   smooth+=(energy-smooth)*0.05;
 
-  const scale=1+smooth*0.03;
-  cards.forEach(c=>{
-    c.style.transform=`scale(${scale})`;
-    c.style.boxShadow=
-      `0 40px 120px rgba(0,0,0,.8),
-       0 0 ${60+smooth*240}px rgba(160,255,245,.25)`;
-  });
+  player.style.transform=
+    `scale(${1+smooth*0.035})`;
+  player.style.boxShadow=
+    `0 40px 120px rgba(0,0,0,.8),
+     0 0 ${50+smooth*220}px rgba(160,255,245,.35)`;
 
   bg.style.transform=`scale(${1+smooth*0.12})`;
-  bg.style.opacity=0.6+smooth*0.5;
+  bg.style.opacity=.6+smooth*.4;
+}
+
+function resetVisual(){
+  smooth=0;
+  player.style.transform="scale(1)";
+  player.style.boxShadow=
+    "0 40px 120px rgba(0,0,0,.8)";
+  bg.style.transform="scale(1)";
+  bg.style.opacity=.6;
 }
 
 load();
-
-}
-
-/* ===== INIT ===== */
-loadSong();
-
