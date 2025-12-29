@@ -1,15 +1,3 @@
-// ===== PLAYLIST =====//
-
-/* === KEY SYSTEM === */
-function unlock(){
-  const key = document.getElementById("keyInput").value;
-  if(key === "altharizz ganteng"){
-    document.getElementById("lock").style.display="none";
-    document.getElementById("main").classList.remove("hidden");
-  }else{
-    document.getElementById("error").innerText="Key salah";
-  }
-}
 
 /* === MUSIC === */
 const songs=[
