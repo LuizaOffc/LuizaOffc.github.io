@@ -100,5 +100,32 @@ h1{color:#fff;margin:10px 0}
   font-size:24px;
   cursor:pointer;
 }
+/* ===== ULTRA PREMIUM FINISH ===== */
+
+body {
+  background: #000;
+  transition: background 1.2s ease;
+}
+
+.card {
+  backdrop-filter: blur(22px) saturate(120%);
+  -webkit-backdrop-filter: blur(22px) saturate(120%);
+  border: 1px solid rgba(255,255,255,.06);
+  transition: 
+    transform 1s cubic-bezier(.2,.6,.2,1),
+    box-shadow 1s cubic-bezier(.2,.6,.2,1);
+}
+
+.song {
+  transition: color .4s ease;
+}
+
+.song.active {
+  color: #ffffff;
+}
+
+.progress {
+  transition: width .4s linear;
+}
 
 
