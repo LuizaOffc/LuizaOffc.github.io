@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anntanr</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altharizz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="bg"></div>
 
-<div class="card">
-  <img src="assets/avatar.png" class="avatar">
-  <h1>Anntanr</h1>
-  <p class="bio">Listen quietly. Feel deeply.</p>
+<div class="wrapper">
 
-  <div class="playlist" id="playlist"></div>
+  <!-- PROFILE -->
+  <div class="card profile">
+    <img src="assets/avatar.png" class="avatar">
+    <h1>altharizz</h1>
+    <p class="desc">
+      Halo, saya <b>altharizz</b>.  
+      Saya adalah Website Designer dan Bot Creator.
+      Saya juga tertarik pada musik, teknologi, dan hal-hal sederhana
+      yang terasa bermakna. Website ini adalah ruang kecil
+      untuk menikmati musik dengan tenang.
+    </p>
 
-  <div class="player">
-    <div id="songTitle" class="title">Klik ▶ untuk mulai</div>
+    <div class="contact">
+      <a href="https://t.me/anntanr" target="_blank">Telegram</a>
+      <a href="https://wa.me/6283891459366" target="_blank">WhatsApp</a>
+      <a href="https://github.com/LuizaOffc" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <!-- PLAYLIST -->
+  <div class="card player">
+    <div id="songTitle" class="title">Klik ▶ untuk memutar</div>
+
+    <div class="playlist" id="playlist"></div>
+
     <div class="progress-wrap">
       <div class="progress"></div>
     </div>
+
     <div class="controls">
       <button onclick="prevSong()">⏮</button>
       <button onclick="togglePlay()">▶</button>
       <button onclick="nextSong()">⏭</button>
     </div>
   </div>
+
 </div>
 
 <script src="script.js"></script>
