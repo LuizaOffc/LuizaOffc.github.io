@@ -1,49 +1,43 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Anntanr</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anntarr</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <canvas id="particles"></canvas>
 
-<div class="container">
-  <div class="profile-card">
+<div class="card">
+  <img src="assets/avatar.png" class="avatar">
+  <h1>Anntarr <span class="verified">✔</span></h1>
+  <p class="bio">Stay silent, Let success speak.</p>
 
-    <img src="assets/avatar.png" class="avatar">
-    <h1>Anntanr <span>✔</span></h1>
-    <p class="bio">Stay silent, Let success speak.</p>
-
-    <div class="links">
-      <a href="#">Telegram</a>
-      <a href="#">GitHub</a>
-      <a href="#">WhatsApp</a>
-    </div>
-
-    <div class="player">
-      <p id="song-title">Disarankan Di Bandung</p>
-      <div class="progress-container">
-  <div class="progress"></div>
-</div>
-
-      <audio id="audio"></audio>
-
-      <div class="controls">
-        <button onclick="prevSong()">⏮</button>
-        <button onclick="playPause()">▶</button>
-        <button onclick="nextSong()">⏭</button>
-      </div>
-    </div>
-
+  <div class="links">
+    <a href="#" class="btn">Telegram</a>
+    <a href="#" class="btn">GitHub</a>
+    <a href="#" class="btn">WhatsApp</a>
   </div>
 
-  <footer>
-    <small>© 2025 anntanr — All rights reserved.</small>
-  </footer>
+  <div class="player">
+    <div class="song-title" id="songTitle">Kota ini tak sama tanpamu</div>
+
+    <div class="progress-container">
+      <div class="progress"></div>
+    </div>
+
+    <div class="controls">
+      <button onclick="prevSong()">⏮</button>
+      <button onclick="togglePlay()">▶</button>
+      <button onclick="nextSong()">⏭</button>
+    </div>
+  </div>
 </div>
+
+<footer>© 2025 anntarr — All rights reserved.</footer>
 
 <script src="script.js"></script>
 </body>
