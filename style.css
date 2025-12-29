@@ -1,4 +1,5 @@
 :root { --neon:#00fff0; }
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 
 body{
@@ -7,13 +8,11 @@ body{
   overflow:hidden;
 }
 
-/* CANVAS */
 #particles,#visualizer{
   position:fixed;
   inset:0;
 }
 
-/* CARD */
 .card{
   width:340px;
   background:rgba(0,0,0,.7);
@@ -25,19 +24,22 @@ body{
   left:50%;
   transform:translate(-50%,-50%);
   animation:float 6s ease-in-out infinite;
+  text-align:center;
+  z-index:2;
 }
-.hidden{display:none}
 
-@keyframes float{50%{transform:translate(-50%,-55%)}}
+@keyframes float{
+  50%{transform:translate(-50%,-55%)}
+}
 
 .avatar{
   width:100px;
   border-radius:50%;
-  box-shadow:0 0 20px var(--neon);
+  box-shadow:0 0 25px var(--neon);
 }
 
 h1{color:#fff;margin:10px 0}
-.bio{color:#aaa;font-size:13px;margin-bottom:15px}
+.bio{color:#aaa;font-size:13px}
 .verified{color:var(--neon)}
 
 .links .btn{
@@ -45,16 +47,21 @@ h1{color:#fff;margin:10px 0}
   margin:8px 0;
   padding:10px;
   color:#fff;
-  text-align:center;
   border-radius:10px;
   background:rgba(255,255,255,.05);
+  text-decoration:none;
+  transition:.3s;
+}
+.links .btn:hover{
+  box-shadow:0 0 15px var(--neon);
+  transform:translateY(-2px);
 }
 
-/* PLAYLIST */
 .playlist{
   max-height:120px;
   overflow-y:auto;
   margin-top:15px;
+  text-align:left;
 }
 .song{
   padding:8px;
@@ -63,12 +70,17 @@ h1{color:#fff;margin:10px 0}
 }
 .song.active{
   color:var(--neon);
-  text-shadow:0 0 10px var(--neon);
+  animation:pulse 1.5s infinite;
 }
 
-/* PLAYER */
+@keyframes pulse{
+  0%{text-shadow:0 0 5px var(--neon)}
+  50%{text-shadow:0 0 20px var(--neon)}
+  100%{text-shadow:0 0 5px var(--neon)}
+}
+
 .player{margin-top:15px}
-.song-title{color:#fff;font-size:14px}
+.song-title{color:#fff;font-size:14px;margin-bottom:6px}
 
 .progress-container{
   height:4px;
@@ -93,5 +105,8 @@ h1{color:#fff;margin:10px 0}
   border:none;
   color:var(--neon);
   font-size:24px;
+  cursor:pointer;
 }
+
+#visualizer{pointer-events:none;opacity:.85}
 
