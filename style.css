@@ -120,8 +120,123 @@ body{
 .progress-wrap{
   height:4px;
   background:rgba(255,255,255,.15);
-  border-radius:4px;
+  border-radius:4px;*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont;
+}
+
+body{
+  height:100vh;
+  background:#000;
+  overflow:hidden;
+}
+
+.bg{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at center,
+      rgba(0,255,240,.12),
+      #000 70%);
+  filter:blur(80px);
+  opacity:.6;
+  transition:transform 1s ease, opacity 1s ease;
+}
+
+.wrapper{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  display:flex;
+  gap:28px;
+  z-index:2;
+}
+
+.card{
+  width:340px;
+  padding:26px;
+  border-radius:28px;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.12),
+    rgba(0,0,0,.55)
+  );
+  backdrop-filter: blur(30px);
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 40px 120px rgba(0,0,0,.8);
+  color:#fff;
+}
+
+/* PROFILE — STATIS */
+.profile{
+  text-align:center;
+}
+
+.avatar{
+  width:100px;
+  border-radius:50%;
+  margin-bottom:12px;
+  box-shadow:0 0 25px rgba(255,255,255,.3);
+}
+
+.profile h1{
+  font-size:20px;
+}
+
+.desc{
+  font-size:13px;
+  opacity:.75;
+  margin:14px 0 18px;
+  line-height:1.6;
+}
+
+.contact a{
+  display:block;
+  padding:10px;
+  margin:6px 0;
+  border-radius:12px;
+  background:rgba(255,255,255,.08);
+  text-decoration:none;
+  color:#fff;
+}
+.contact a:hover{
+  background:rgba(255,255,255,.18);
+}
+
+/* PLAYER — DINAMIS */
+.player{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:transform .8s ease, box-shadow .8s ease;
+}
+
+.title{
+  font-size:14px;
   margin-bottom:10px;
+}
+
+.playlist{
+  max-height:150px;
+  overflow-y:auto;
+}
+
+.song{
+  padding:7px 5px;
+  font-size:13px;
+  opacity:.5;
+  cursor:pointer;
+}
+.song.active{opacity:1}
+
+.progress-wrap{
+  height:4px;
+  background:rgba(255,255,255,.15);
+  border-radius:4px;
+  margin:12px 0;
 }
 .progress{
   height:100%;
@@ -144,9 +259,6 @@ body{
 }
 .controls button:hover{opacity:1}
 
-/* MOBILE */
 @media(max-width:800px){
-  .wrapper{
-    flex-direction:column;
-  }
+  .wrapper{flex-direction:column}
 }
