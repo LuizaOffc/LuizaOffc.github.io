@@ -1,19 +1,22 @@
 const songs=[
   "assets/song1.mp3",
   "assets/song2.mp3",
-  "assets/song3.mp3"
+  "assets/song3.mp3",
+  "assets/song4.mp3"
 ];
 
 const titles=[
   "Disarankan di Bandung",
   "Kota Ini Tak Sama Tanpamu",
-  "Ngga Dulu"
+  "Ngga Dulu",
+  "Menerima Luka"
 ];
 
 const covers=[
   "assets/cover1.jpg",
   "assets/cover2.jpg",
-  "assets/cover3.jpg"
+  "assets/cover3.jpg",
+  "assets/cover4.jpg"
 ];
 
 let index=0;
