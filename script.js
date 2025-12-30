@@ -3,7 +3,9 @@ const songs=[
   "assets/song2.mp3",
   "assets/song3.mp3",
   "assets/song4.mp3",
-  "assets/song5.mp3"
+  "assets/song5.mp3",
+  "assets/song6.mp3",
+  "assets/song7.mp3"
 ];
 
 const titles=[
@@ -11,7 +13,9 @@ const titles=[
   "Kota Ini Tak Sama Tanpamu",
   "Ngga Dulu",
   "Menerima Luka",
-  "Berubah"
+  "Berubah",
+  "SO ASUU",
+  "Kasih Tau Mama"
 ];
 
 const covers=[
@@ -19,7 +23,9 @@ const covers=[
   "assets/cover2.jpg",
   "assets/cover3.jpg",
   "assets/cover4.jpg",
-  "assets/cover5.jpg"
+  "assets/cover5.jpg",
+  "assets/cover6.jpg",
+  "assets/cover7.jpg"
 ];
 
 let index=0;
