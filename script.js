@@ -34,18 +34,6 @@ const vol=document.querySelector(".volume");
 const cur=document.getElementById("current");
 const dur=document.getElementById("duration");
 
-<script>
-  // Tunggu 2 detik sebelum sembunyikan preloader
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const preloader = document.getElementById('preloader');
-      preloader.style.transition = 'opacity 0.5s';
-      preloader.style.opacity = 0;
-      setTimeout(() => preloader.style.display = 'none', 500);
-    }, 2000); // durasi preloader
-  });
-</script>
-
 /* PLAYLIST */
 titles.forEach((t,i)=>{
   const el=document.createElement("div");
