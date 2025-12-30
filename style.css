@@ -32,38 +32,6 @@ body{
   z-index:2;
 }
 
-  /* Fullscreen preloader */
-  #preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #1e1e1e;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    flex-direction: column;
-    color: white;
-  }
-
-  /* Logo animasi */
-  .logo {
-    font-size: 3em;
-    font-weight: bold;
-    opacity: 0;
-    transform: scale(0.5);
-    animation: fadeInScale 1.5s forwards;
-  }
-
-  /* Animasi fade in + scale */
-  @keyframes fadeInScale {
-    0% { opacity: 0; transform: scale(0.5); }
-    50% { opacity: 1; transform: scale(1.2); }
-    100% { opacity: 1; transform: scale(1); }
-  }
-
 /* CARD GENERAL */
 .card{
   width:300px;              /* 🔽 DIPERKECIL */
